@@ -5,7 +5,7 @@ load_dotenv()
 
 import openai
 
-openai.api_key = os.getenv('API_key')
+openai.api_key = str(os.getenv('API_key'))
 
 settings = "You are an AI assistant named Bob. You must be friendly and speak semi-formally. Keep your answers as short as possible."
 messages = []
@@ -24,7 +24,7 @@ messages.append({"role": "system", "content": settings})
 #     messages.append({"role": "assistant", "content": reply})
 def get_response(prompt):
     messages.append({"role": "user", "content": prompt})
-    print("fetching")
+    #print("fetching")
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages #[{"role": "user", "content": prompt}]
